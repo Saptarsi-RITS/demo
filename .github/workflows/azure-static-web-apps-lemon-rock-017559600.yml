@@ -23,7 +23,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '22' # ✅ updated version
 
       - name: Install dependencies
         run: npm ci
@@ -39,8 +39,8 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: upload
           app_location: "/"
-          output_location: "dist" # ✅ use dist, not build
-          api_location: "" # leave empty if no API
+          output_location: "dist"
+          api_location: ""
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
